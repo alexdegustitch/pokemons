@@ -1,0 +1,308 @@
+<div class="jumbotron text-center">
+    <h1>Pokémon</h1>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin"> Info </a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false"> Pokémon </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink='/add_pokemon'> Add Pokémon </a>
+            <a class="dropdown-item" routerLink="/add_fast_attack"> Add Fast Attack </a>
+            <a class="dropdown-item" routerLink="/add_main_attack"> Add Main Attack </a>
+            <a class="dropdown-item" routerLink="/connect_attack"> Connect Pokémon with Attacks </a>
+            <a class="dropdown-item" routerLink="/pokemon_details"> Add Pokémon Details </a>
+            <a class="dropdown-item" routerLink="/pokemon_evolution"> Pokémon Evolution </a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/all_pokemon">All Pokémon</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tournaments">Tournaments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/table_points">Points</a>
+      </li>
+</ul>
+
+
+<div class='container'>
+
+    <div class='row justify-content-center mt-4' style='color: crimson;'>
+        <h2> Tournament "{{tour.name}}" - Semifinals </h2>
+    </div>
+
+
+    <div class='row justify-content-center mt-3' id="myDiv">
+
+        <div class='col col-sm-5 justify-content-center' style="text-align: center;">
+            <img  src="assets/pokemon/{{match_details[0].idPokemon1}}.png" />
+            <span style="display: block;">
+                <h3 style="text-align: center;">
+                    <a [id]='match_details[0].namePokemon1'
+                        [routerLink]="['/pokemon_profile', match_details[0].idPokemon1]">{{match_details[0].namePokemon1}}
+                    </a>
+                </h3>
+            </span>
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-5 justify-content-center' style="text-align: center;">
+            <img src="assets/pokemon/{{match_details[0].idPokemon2}}.png" />
+            <span style="display: block;">
+                <h3 style="text-align: center;">
+                    <a [id]='match_details[0].namePokemon2'
+                        [routerLink]="['/pokemon_profile', match_details[0].idPokemon2]">{{match_details[0].namePokemon2}}
+                    </a>
+                </h3>
+            </span>
+        </div>
+    </div>
+    <div class='row justify-content-center mt-3' id="myDiv" style="text-align: center;">
+        <div class='col col-sm-2 justify-content-center'>
+            
+        </div>
+        <div class='col col-sm-1 justify-content-center'>
+            <img src="assets/icons_big/{{match_details[0].pokemon1type1}}.png" />
+            <img *ngIf='match_details[0].pokemon1type2!=0' src="assets/icons_big/{{match_details[0].pokemon1type2}}.png" />
+        </div>
+        <div class='col col-sm-2 justify-content-center' style="text-align: center;">
+            
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-2 justify-content-center' style="text-align: center;">
+           
+        </div>
+        <div class='col col-sm-1 justify-content-center'>
+            <img src="assets/icons_big/{{match_details[0].pokemon2type1}}.png" />
+            <img *ngIf='match_details[0].pokemon2type2!=0' src="assets/icons_big/{{match_details[0].pokemon2type2}}.png" />
+        </div>
+        <div class='col col-sm-2 justify-content-center' style="text-align: center;">
+           
+        </div>
+    </div>
+    <div class='row justify-content-center mt-3' id="myDiv">
+
+        <div class='col col-sm-2 justify-content-center'>
+            <span style="display: block;">
+                <h3 style="text-align: center;" value="No Quick Attack Yet">
+                    {{match_details[0].nameFastAttack1}}<img *ngIf="match_details[0].idFastAttack1Type!=0"
+                    src="assets/icons_big/{{match_details[0].idFastAttack1Type}}.png" />
+                </h3>
+            </span>
+            
+        </div>
+        <div class='col col-sm-1 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+            <span style="display: block;">
+                <h3 style="text-align: center;" value="No Quick Attack Yet">
+                    {{match_details[0].nameMainAttack1}}<img *ngIf="match_details[0].idMainAttack1Type!=0"
+                    src="assets/icons_big/{{match_details[0].idMainAttack1Type}}.png" />
+                </h3>
+            </span>
+            
+        </div>
+
+        <div class='col col-sm-2 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+            
+            <span style="display: block;">
+                <h3 style="text-align: center;" value="No Quick Attack Yet">
+                    {{match_details[0].nameMainAttack2}}
+                    <img *ngIf="match_details[0].idMainAttack2Type!=0"
+                src="assets/icons_big/{{match_details[0].idMainAttack2Type}}.png" />
+                </h3>
+            </span>
+        </div>
+        <div class='col col-sm-1 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+            
+            <span style="display: block;">
+                <h3 style="text-align: center;" value="No Quick Attack Yet">
+                    {{match_details[0].nameFastAttack2}}
+                    <img *ngIf="match_details[0].idFastAttack2Type!=0"
+                src="assets/icons_big/{{match_details[0].idFastAttack2Type}}.png" />
+                </h3>
+            </span>
+        </div>
+    </div>
+    <div class='row justify-content-center mt-3' id="myDiv">
+        <div class='col col-sm-5 justify-content-center'>
+            <div class='progress'>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                id='progress_bar_match1_pok1' aria-valuenow="500" aria-valuemin="0"
+                aria-valuemax="500" style="width: 100%">
+            </div>
+            </div>
+            
+        </div>
+        <div class='col col-sm-2 justify-content-center' style="text-align: center;">
+            <button id="match_one" style="text-align: center" type="submit" class="btn btn-warning" id="run_matches" (click)="run_match(0)">Run Match</button>
+        </div>
+        <div class='col col-sm-5 justify-content-center'>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                id='progress_bar_match1_pok2' aria-valuenow="500" aria-valuemin="0"
+                aria-valuemax="500" style="width: 100%">
+            </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+
+
+    <div class='row justify-content-center mt-5' id="myDiv">
+
+        <div class='col col-sm-5 justify-content-center' style="text-align: center;">
+            <img  src="assets/pokemon/{{match_details[1].idPokemon1}}.png" />
+            <span style="display: block;">
+                <h3 style="text-align: center;">
+                    <a [id]='match_details[1].namePokemon1'
+                        [routerLink]="['/pokemon_profile', match_details[1].idPokemon1]">{{match_details[1].namePokemon1}}
+                    </a>
+                </h3>
+            </span>
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-5 justify-content-center' style="text-align: center;">
+            <img src="assets/pokemon/{{match_details[1].idPokemon2}}.png" />
+            <span style="display: block;">
+                <h3 style="text-align: center;">
+                    <a [id]='match_details[1].namePokemon2'
+                        [routerLink]="['/pokemon_profile', match_details[1].idPokemon2]">{{match_details[1].namePokemon2}}
+                    </a>
+                </h3>
+            </span>
+        </div>
+    </div>
+    <div class='row justify-content-center mt-3' id="myDiv" style="text-align: center;">
+        <div class='col col-sm-2 justify-content-center'>
+            
+        </div>
+        <div class='col col-sm-1 justify-content-center'>
+            <img src="assets/icons_big/{{match_details[1].pokemon1type1}}.png" />
+            <img *ngIf='match_details[1].pokemon1type2!=0' src="assets/icons_big/{{match_details[1].pokemon1type2}}.png" />
+        </div>
+        <div class='col col-sm-2 justify-content-center' style="text-align: center;">
+            
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-2 justify-content-center' style="text-align: center;">
+           
+        </div>
+        <div class='col col-sm-1 justify-content-center'>
+            <img src="assets/icons_big/{{match_details[1].pokemon2type1}}.png" />
+            <img *ngIf='match_details[1].pokemon2type2!=0' src="assets/icons_big/{{match_details[1].pokemon2type2}}.png" />
+        </div>
+        <div class='col col-sm-2 justify-content-center' style="text-align: center;">
+           
+        </div>
+    </div>
+    <div class='row justify-content-center mt-3' id="myDiv">
+
+        <div class='col col-sm-2 justify-content-center'>
+            <span style="display: block;">
+                <h3 style="text-align: center;" value="No Quick Attack Yet">
+                    {{match_details[1].nameFastAttack1}}<img *ngIf="match_details[1].idFastAttack1Type!=0"
+                    src="assets/icons_big/{{match_details[1].idFastAttack1Type}}.png" />
+                </h3>
+            </span>
+            
+        </div>
+        <div class='col col-sm-1 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+            <span style="display: block;">
+                <h3 style="text-align: center;" value="No Quick Attack Yet">
+                    {{match_details[1].nameMainAttack1}}<img *ngIf="match_details[1].idMainAttack1Type!=0"
+                    src="assets/icons_big/{{match_details[1].idMainAttack1Type}}.png" />
+                </h3>
+            </span>
+            
+        </div>
+
+        <div class='col col-sm-2 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+            
+            <span style="display: block;">
+                <h3 style="text-align: center;" value="No Quick Attack Yet">
+                    {{match_details[1].nameMainAttack2}}
+                    <img *ngIf="match_details[1].idMainAttack2Type!=0"
+                src="assets/icons_big/{{match_details[1].idMainAttack2Type}}.png" />
+                </h3>
+            </span>
+        </div>
+        <div class='col col-sm-1 justify-content-center'>
+
+        </div>
+        <div class='col col-sm-2 justify-content-center'>
+            
+            <span style="display: block;">
+                <h3 style="text-align: center;" value="No Quick Attack Yet">
+                    {{match_details[1].nameFastAttack2}}
+                    <img *ngIf="match_details[1].idFastAttack2Type!=0"
+                src="assets/icons_big/{{match_details[1].idFastAttack2Type}}.png" />
+                </h3>
+            </span>
+        </div>
+    </div>
+    <div class='row justify-content-center mt-3 mb-4' id="myDiv">
+        <div class='col col-sm-5 justify-content-center'>
+            <div class='progress'>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                id='progress_bar_match2_pok1' aria-valuenow="500" aria-valuemin="0"
+                aria-valuemax="500" style="width: 100%">
+            </div>
+            </div>
+            
+        </div>
+        <div class='col col-sm-2 justify-content-center' style="text-align: center;">
+            <button id="match_one" style="text-align: center" type="submit" class="btn btn-warning" id="run_matches" (click)="run_match(1)">Run Match</button>
+        </div>
+        <div class='col col-sm-5 justify-content-center'>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                id='progress_bar_match2_pok2' aria-valuenow="500" aria-valuemin="0"
+                aria-valuemax="500" style="width: 100%">
+            </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class='row justify-content-center mt-4 mb-4'>
+        <div class='col col-sm-3'>
+
+        </div>
+        <div class='col col-sm-6 justify-content-left' style="text-align: center;">
+            <button type="submit" class="btn btn-info" id="next_stage" (click)="next_stage()" >Next
+                Stage</button>
+        </div>
+        <div class='col col-sm-3'>
+
+        </div>
+    </div>
+    
+</div>

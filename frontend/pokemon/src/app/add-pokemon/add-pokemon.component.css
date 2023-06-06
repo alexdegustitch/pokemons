@@ -1,0 +1,113 @@
+#bug.select_option {
+    color: #92BC2C;
+    font-weight: bold;
+    box-shadow: 0 0 20px #92BC2C;
+}
+
+#dark.select_option {
+    color: #595761;
+    font-weight: bold;
+    box-shadow: 0 0 20px #595761;
+}
+
+#dragon.select_option {
+    color: #0C69C8;
+    font-weight: bold;
+    box-shadow: 0 0 20px #0C69C8;
+}
+
+#electric.select_option {
+    color: #F2D94E;
+    font-weight: bold;
+    box-shadow: 0 0 20px #F2D94E;
+}
+
+#fire.select_option {
+    color: #FBA54C;
+    font-weight: bold;
+    box-shadow: 0 0 20px #FBA54C;
+}
+
+#fairy.select_option {
+    color: #EE90E6;
+    font-weight: bold;
+    box-shadow: 0 0 20px #EE90E6;
+}
+
+#fighting.select_option {
+    color: #D3425F;
+    font-weight: bold;
+    box-shadow: 0 0 20px #D3425F;
+}
+
+#flying.select_option {
+    color: #A1BBEC;
+    font-weight: bold;
+    box-shadow: 0 0 20px #A1BBEC;
+}
+
+#ghost.select_option {
+    color: #5F6DBC;
+    font-weight: bold;
+    box-shadow: 0 0 20px #5F6DBC;
+}
+
+#grass.select_option {
+    color: #5FBD58;
+    font-weight: bold;
+    box-shadow: 0 0 20px #5FBD58;
+}
+
+#ground.select_option {
+    color: #DA7C4D;
+    font-weight: bold;
+    box-shadow: 0 0 20px #DA7C4D;
+}
+
+#ice.select_option {
+    color: #75D0C1;
+    font-weight: bold;
+    box-shadow: 0 0 20px #75D0C1;
+}
+
+#normal.select_option {
+    color: #A0A29F;
+    font-weight: bold;
+    box-shadow: 0 0 20px #A0A29F;
+}
+
+#poison.select_option {
+    color: #B763CF;
+    font-weight: bold;
+    box-shadow: 0 0 20px #B763CF;
+}
+
+#psychic.select_option {
+    color: #FA8581;
+    font-weight: bold;
+    box-shadow: 0 0 20px #FA8581;
+}
+
+#rock.select_option {
+    color: #C9BB8A;
+    font-weight: bold;
+    box-shadow: 0 0 20px #C9BB8A;
+}
+
+#steel.select_option {
+    color: #5695A3;
+    font-weight: bold;
+    box-shadow: 0 0 20px #5695A3;
+}
+
+#water.select_option {
+    color: #539DDF;
+    font-weight: bold;
+    box-shadow: 0 0 20px #539DDF;
+}
+
+.select_option {
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 0 20px black;
+}

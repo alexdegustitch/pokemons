@@ -1,0 +1,106 @@
+<div class="jumbotron text-center">
+    <h1>Pokémon</h1>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin"> Info </a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false"> Pokémon </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink='/add_pokemon'> Add Pokémon </a>
+            <a class="dropdown-item" routerLink="/add_fast_attack"> Add Fast Attack </a>
+            <a class="dropdown-item" routerLink="/add_main_attack"> Add Main Attack </a>
+            <a class="dropdown-item" routerLink="/connect_attack"> Connect Pokémon with Attacks </a>
+            <a class="dropdown-item" routerLink="/pokemon_details"> Add Pokémon Details </a>
+            <a class="dropdown-item" routerLink="/pokemon_evolution"> Pokémon Evolution </a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/all_pokemon">All Pokémon</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/tournaments">Tournaments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/table_points">Points</a>
+      </li>
+</ul>
+
+
+<div class='container'>
+
+    <div class='row justify-content-center mt-4' style='color: crimson;'>
+        <h2>Add new Tournament</h2>
+    </div>
+
+
+
+
+
+    <div class='row justify-content-center mt-3'>
+        <div class='col col-sm-4'>
+
+        </div>
+        <div class='co col-sm-4  justify-content-center'>
+
+            <form>
+                <div class="form-group">
+                    <label for="name" class='font-weight-bold'>Tournament's name</label>
+                    <input type="text" [(ngModel)]='name' class="form-control" id="name" name='name'>
+
+                </div>
+
+                <div class='form-group text-center'>
+                    <button type="submit" class="btn btn-success" (click)="add_new_tournament()">Submit</button>
+                </div>
+
+            </form>
+        </div>
+        <div class='col col-sm-4 '>
+
+        </div>
+    </div>
+
+    <div class='row justify-content-center mt-4' style='color: crimson;'>
+        <h2>Old Tournaments Results</h2>
+    </div>
+
+
+
+
+
+    <div class='row justify-content-center mt-3'>
+        <div class='col col-sm-2'>
+
+        </div>
+        <div class='co col-sm-8 justify-content-center'>
+            <table class="table" id='tournaments_table'>
+                <thead class="thead-light">
+                    <tr>
+                        <th style="width: 20%">Tournament</th>
+                        <th style="width: 20%">Winner</th>
+                        <th style="width: 20%">Runner-Up</th>
+                        <th style="width: 20%">SemiFinalist</th>
+                        <th style="width: 20%">SemiFinalist</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let t of tournaments' class='justify-content-center'>
+                        <td>{{t.name}}</td>
+                        <td>{{t.winner}}</td>
+                        <td>{{t.second}}</td>
+                        <td>{{t.semifinalist1}}</td>
+                        <td>{{t.semifinalist2}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+        <div class='col col-sm-2 '>
+
+        </div>
+    </div>
+</div>

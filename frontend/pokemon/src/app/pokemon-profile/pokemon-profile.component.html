@@ -1,0 +1,202 @@
+<div class="jumbotron text-center">
+    <h1>Pokémon</h1>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="/admin"> Info </a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false"> Pokémon </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink='/add_pokemon'> Add Pokémon </a>
+            <a class="dropdown-item" routerLink="/add_fast_attack"> Add Fast Attack </a>
+            <a class="dropdown-item" routerLink="/add_main_attack"> Add Main Attack </a>
+            <a class="dropdown-item" routerLink="/connect_attack"> Connect Pokémon with Attacks </a>
+            <a class="dropdown-item" routerLink="/pokemon_details"> Add Pokémon Details </a>
+            <a class="dropdown-item" routerLink="/pokemon_evolution"> Pokémon Evolution </a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/all_pokemon">All Pokémon</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tournaments">Tournaments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/table_points">Points</a>
+      </li>
+</ul>
+
+<div class='container'>
+    <div class='row'>
+        <div class='col col-sm-2'>
+
+        </div>
+        <div class='col col-sm-8 justify-content-center' style="text-align: center;">
+            <img src='assets/pokemon/{{pokemon.id}}.png' style="text-align: center;" />
+
+            <span style="display: block;" >
+                <h2>{{pokemon.name}}</h2><h3 class='text-muted'>#{{pokemon.id}}</h3>
+            </span>
+
+
+        </div>
+        <div class='col col-sm-2'>
+
+        </div>
+    </div>
+    <div class='row mt-3' *ngIf='pokemon.type2!=0'>
+        <div class='col col-sm-2'>
+
+        </div>
+        <div class='col col-sm-4 justify-content-center' style="text-align: center;">
+            <img src="assets/icons_big/{{pokemon.type1}}.png" />
+        </div>
+        <div class='col col-sm-4 justify-content-center' style="text-align: center;">
+            <img *ngIf='pokemon.type2!=0' src="assets/icons_big/{{pokemon.type2}}.png" />
+        </div>
+        <div class='col col-sm-2'>
+
+        </div>
+    </div>
+    <div class='row mt-3' *ngIf='pokemon.type2==0'>
+        <div class='col col-sm-2'>
+
+        </div>
+        <div class='col col-sm-8 justify-content-center' style="text-align: center;">
+            <img src="assets/icons_big/{{pokemon.type1}}.png" />
+        </div>
+        <div class='col col-sm-2'>
+
+        </div>
+    </div>
+    <div class='row mt-3'>
+        <div class='col col-sm-2'>
+
+        </div>
+        <div  id='about' class='col col-sm-8 justify-content-center' style="text-align: center;">
+            <span style="text-align: center;">
+                "{{pokemon.about}}"
+            </span>
+        </div>
+        <div class='col col-sm-2'>
+
+        </div>
+    </div>
+    <div class='row mt-3'>
+        <div class='col col-sm-2'>
+
+        </div>
+        <div class='col col-sm-8 justify-content-center'>
+            <span id='hp' style="text-align: center;">
+                <h4>HP: {{pokemon.health}}</h4>
+            </span>
+            
+        </div>
+        <div class='col col-sm-2'>
+
+        </div>
+    </div>
+    <div class='row mt-3'>
+        <div class='col col-sm-2'>
+
+        </div>
+        <div class='col col-sm-4 justify-content-center'>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+                <table class="table table-bordered table-striped mb-0">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th scope="col">#</th>
+                            <th scope="col">Quick Attacks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of quick_attacks; let i = index" style="text-align: center;">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{a.name}}&nbsp;<span style="text-align: right;"><img src='assets/icons/{{a.type}}.ico'/></span></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class='col col-sm-4 justify-content-center'>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+                <table class="table table-bordered table-striped mb-0">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th scope="col">#</th>
+                            <th scope="col">Main Attacks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of main_attacks; let i = index" style="text-align: center;">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{a.name}}&nbsp;<span style="text-align: right;"><img src='assets/icons/{{a.type}}.ico'/></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class='col col-sm-2'>
+
+        </div>
+    </div>
+    <div class='row'>
+        
+        <div class='col col-sm-12 justify-content-center'>
+            <div class='row mt-5 mb-5' *ngIf="br_evolution == 1">
+                <div class="col col-sm-4"></div>
+                <div class="col col-sm-4 justify-content-center">
+                    <h5 style="font-weight: bold;">This Pokémon Has No Evolution</h5>
+                </div>
+                <div class="col col-sm-4"></div>
+            </div>
+            <div class='row' *ngIf="br_evolution == 2">
+                <div class='col col-sm' style="width: 17%;">
+
+                </div>
+                
+                <div class='col col-sm justify-content-center' style="width: 30%;" style="text-align: center;">
+                    <img src="assets/pokemon/{{first}}.png" style="position: relative;  top:47%; transform: translateY(-50%);"/>
+                </div>
+                <div class='col col-sm justify-content-center'style="width: 6%;" style="text-align: center;">
+                    <img src='assets/arrow/right-arrow.png' style="position: relative;  top:50%; transform: translateY(-50%);"/>
+                </div>
+                <div class='col col-sm justify-content-center' style="width: 30%;" style="text-align: center;">
+                    <img *ngFor="let s of second" src="assets/pokemon/{{s}}.png" />
+                </div>
+                <div class='col col-sm' style="width: 17%;">
+
+                </div>
+            </div>
+            <div class='row' *ngIf="br_evolution == 3">
+            
+                <div class='col col-sm justify-content-center'  style="width: 30%;" style="text-align: center;">
+                    <img src="assets/pokemon/{{first}}.png" style="position: relative;  top:47%; transform: translateY(-50%);"/>
+                </div>
+                <div class='col col-sm justify-content-center' style="width: 5%;" style="text-align: center;">
+                    <img src='assets/arrow/right-arrow.png' style="position: relative;  top:50%; transform: translateY(-50%);"/>
+                </div>
+                <div class='col col-sm justify-content-center' style="width: 30%;" style="text-align: center;">
+                    <img *ngFor="let s of second" src="assets/pokemon/{{s}}.png" style="position: relative;  top:50%; transform: translateY(-50%);"/>
+                </div>
+                
+                <div class='col col-sm justify-content-center' style="width: 5%;" style="text-align: center;">
+                    <img src='assets/arrow/right-arrow.png' style="position: relative;  top:50%; transform: translateY(-50%);"/>
+                </div>
+                <div class='col col-sm justify-content-center' style="width: 30%;" style="text-align: center;">
+                    <img *ngFor="let t of third" src="assets/pokemon/{{t}}.png" />
+                </div>
+               
+            </div>
+        </div>
+        
+    </div>
+</div>

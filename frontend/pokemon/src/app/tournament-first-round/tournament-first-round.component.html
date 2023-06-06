@@ -1,0 +1,217 @@
+<div class="jumbotron text-center">
+    <h1>Pokémon</h1>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin"> Info </a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false"> Pokémon </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink='/add_pokemon'> Add Pokémon </a>
+            <a class="dropdown-item" routerLink="/add_fast_attack"> Add Fast Attack </a>
+            <a class="dropdown-item" routerLink="/add_main_attack"> Add Main Attack </a>
+            <a class="dropdown-item" routerLink="/connect_attack"> Connect Pokémon with Attacks </a>
+            <a class="dropdown-item" routerLink="/pokemon_details"> Add Pokémon Details </a>
+            <a class="dropdown-item" routerLink="/pokemon_evolution"> Pokémon Evolution </a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/all_pokemon">All Pokémon</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tournaments">Tournaments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/table_points">Points</a>
+      </li>
+</ul>
+
+
+<div class='container'>
+
+    <div class='row justify-content-center mt-4' style='color: crimson;'>
+        <h2> Tournament "{{tour.name}}" - Round I </h2>
+    </div>
+
+
+    <div class='row justify-content-center mt-3' id="myDiv">
+
+        <div class='col col-sm-6 justify-content-center'>
+            <table class="table" id='pokemon_table'>
+                <tr *ngFor='let m of match_details; let i = index' class='justify-content-center'>
+                    <td *ngIf='i%2==0'>
+                        <div>
+                            <output type='text' class='justify-content-center'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h4>Match {{i+1}}</h4>
+                            </output>
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th style="width: 30; text-align: center;">#</th>
+                                        <th *ngIf="m.hp_left1>0 && m.result!=3" style="width: 35%; text-align: center;"><a
+                                                [id]='m.namePokemon1' style="color:green"
+                                                [routerLink]="['/pokemon_profile', m.idPokemon1]">{{m.namePokemon1}}</a>
+                                        </th>
+                                        <th *ngIf="m.hp_left1<=0 && m.result!=3" style="width: 35%; text-align: center;"><a
+                                                [id]='m.namePokemon1' style="color:red"
+                                                [routerLink]="['/pokemon_profile', m.idPokemon1]">{{m.namePokemon1}}</a>
+                                        </th>
+                                        <th *ngIf="m.hp_left2>0 && m.result!=3" style="width: 35%; text-align: center;"><a
+                                                [id]='m.namePokemon2' style="color:green"
+                                                [routerLink]="['/pokemon_profile', m.idPokemon2]">{{m.namePokemon2}}</a>
+                                        </th>
+                                        <th *ngIf="m.hp_left2<=0 && m.result!=3" style="width: 35%; text-align: center;"><a
+                                                [id]='m.namePokemon2' style="color:red"
+                                                [routerLink]="['/pokemon_profile', m.idPokemon2]">{{m.namePokemon2}}</a>
+                                        </th>
+                                        <th *ngIf="m.result==3" style="width: 35%; text-align: center;"><a [id]='m.namePokemon2'
+                                                [routerLink]="['/pokemon_profile', m.idPokemon1]">{{m.namePokemon1}}</a>
+                                        </th>
+                                        <th *ngIf="m.result==3" style="width: 35%; text-align: center;"><a [id]='m.namePokemon2'
+                                                [routerLink]="['/pokemon_profile', m.idPokemon2]">{{m.namePokemon2}}</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class='justify-content-center'>
+                                        <td>Quick Attack</td>
+                                        <td style="text-align: center;">{{m.nameFastAttack1}}&nbsp;<img *ngIf="m.idFastAttack1Type!=0" src='assets/icons/{{m.idFastAttack1Type}}.ico'/></td>
+                                        <td style="text-align: center;">{{m.nameFastAttack2}}&nbsp;<img *ngIf="m.idFastAttack2Type!=0" src='assets/icons/{{m.idFastAttack2Type}}.ico'/></td>
+                                    </tr>
+                                    <tr class='justify-content-center'>
+                                        <td>Main Attack</td>
+                                        <td style="text-align: center;">{{m.nameMainAttack1}}&nbsp;<img *ngIf="m.idMainAttack1Type!=0" src='assets/icons/{{m.idMainAttack1Type}}.ico'/></td>
+                                        <td style="text-align: center;">{{m.nameMainAttack2}}&nbsp;<img *ngIf="m.idMainAttack2Type!=0" src='assets/icons/{{m.idMainAttack2Type}}.ico'/></td>
+                                    </tr>
+                                    <tr class='justify-content-center'>
+                                        <td>HP Left(%)</td>
+                                        <td style="text-align: center;">{{m.hp_left1}}</td>
+                                        <td style="text-align: center;">{{m.hp_left2}}</td>
+                                    </tr>
+                                    <tr class='justify-content-center'>
+
+                                        <td colspan="3" style="text-align: center;">
+
+                                            <button type="submit" *ngIf='m.result!=3' class="btn btn-warning" [id]="i"
+                                                disabled="true" (click)="run_match(i)">Run Matches</button>
+                                            <button type="submit" *ngIf='m.result==3' class="btn btn-warning" [id]="i"
+                                                (click)="run_match(i)">Run Matches</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class='co col-sm-6 justify-content-center'>
+            <table class="table" id='pokemon_table'>
+
+                <tr *ngFor='let m of match_details; let i = index' class='justify-content-center'>
+                    <td *ngIf='i%2==1'>
+                        <div>
+                            <output type='text' class='justify-content-center'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h4>Match {{i+1}}</h4>
+                            </output>
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th style="width: 30;text-align: center;">#</th>
+                                        <th *ngIf="m.hp_left1>0 && m.result!=3" style="width: 35%; text-align: center;"><a
+                                                [id]='m.namePokemon1' style="color:green"
+                                                [routerLink]="['/pokemon_profile', m.idPokemon1]">{{m.namePokemon1}}</a>
+                                        </th>
+                                        <th *ngIf="m.hp_left1<=0 && m.result!=3" style="width: 35%; text-align: center;"><a
+                                                [id]='m.namePokemon1' style="color:red"
+                                                [routerLink]="['/pokemon_profile', m.idPokemon1]">{{m.namePokemon1}}</a>
+                                        </th>
+                                        <th *ngIf="m.hp_left2>0 && m.result!=3" style="width: 35%; text-align: center;"><a
+                                                [id]='m.namePokemon2' style="color:green"
+                                                [routerLink]="['/pokemon_profile', m.idPokemon2]">{{m.namePokemon2}}</a>
+                                        </th>
+                                        <th *ngIf="m.hp_left2<=0 && m.result!=3" style="width: 35%; text-align: center;"><a
+                                                [id]='m.namePokemon2' style="color:red"
+                                                [routerLink]="['/pokemon_profile', m.idPokemon2]">{{m.namePokemon2}}</a>
+                                        </th>
+                                        <th *ngIf="m.result==3" style="width: 35%; text-align: center;"><a [id]='m.namePokemon2'
+                                                [routerLink]="['/pokemon_profile', m.idPokemon1]">{{m.namePokemon1}}</a>
+                                        </th>
+                                        <th *ngIf="m.result==3" style="width: 35%; text-align: center;"><a [id]='m.namePokemon2'
+                                                [routerLink]="['/pokemon_profile', m.idPokemon2]">{{m.namePokemon2}}</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class='justify-content-center'>
+                                        <td>Quick Attack</td>
+                                        <td style="text-align: center;">{{m.nameFastAttack1}}&nbsp;<img *ngIf="m.idFastAttack1Type!=0" src='assets/icons/{{m.idFastAttack1Type}}.ico'/></td>
+                                        <td style="text-align: center;">{{m.nameFastAttack2}}&nbsp;<img *ngIf="m.idFastAttack2Type!=0" src='assets/icons/{{m.idFastAttack2Type}}.ico'/></td>
+                                    </tr>
+                                    <tr class='justify-content-center'>
+                                        <td>Main Attack</td>
+                                        <td style="text-align: center;">{{m.nameMainAttack1}}&nbsp;<img *ngIf="m.idMainAttack1Type!=0" src='assets/icons/{{m.idMainAttack1Type}}.ico'/></td>
+                                        <td style="text-align: center;">{{m.nameMainAttack2}}&nbsp;<img *ngIf="m.idMainAttack2Type!=0" src='assets/icons/{{m.idMainAttack2Type}}.ico'/></td>
+                                    </tr>
+                                    <tr class='justify-content-center'>
+                                        <td>HP Left(%)</td>
+                                        <td style="text-align: center;">{{m.hp_left1}}</td>
+                                        <td style="text-align: center;">{{m.hp_left2}}</td>
+                                    </tr>
+                                    <tr class='justify-content-center'>
+
+                                        <td colspan="3" style="text-align: center;">
+
+                                            <button type="submit" *ngIf='m.result!=3' class="btn btn-warning" [id]="i"
+                                                disabled="true" (click)="run_match(i)">Run Matches</button>
+                                            <button type="submit" *ngIf='m.result==3' class="btn btn-warning" [id]="i"
+                                                (click)="run_match(i)">Run Matches</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+    <div class='row justify-content-center mt-3'>
+        <div class='col col-sm-3'>
+
+        </div>
+        <div class='col col-sm-3' style="text-align: right;">
+            <button type="submit" class="btn btn-success" id="run_matches" (click)="run_all_matches()">Run All
+                Matches</button>
+        </div>
+        <div class='col col-sm-3 justify-content-left'>
+            <button type="submit" class="btn btn-info" id="next_stage" (click)="next_stage()">Next
+                Stage</button>
+        </div>
+        <div class='col col-sm-3'>
+
+        </div>
+    </div>
+    <div class='row justify-content-center mt-3 mb-5'>
+        <div class='col col-sm-3'>
+
+        </div>
+        <div class='col col-sm-6' style="text-align: right;">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                    id='progress_bar' aria-valuenow="0" aria-valuemin="0" aria-valuemax="448" style="width: 0%">
+                </div>
+            </div>
+        </div>
+        <div class='col col-sm-3'>
+
+        </div>
+    </div>
+</div>

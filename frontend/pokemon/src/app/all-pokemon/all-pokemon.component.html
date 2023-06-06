@@ -1,0 +1,183 @@
+<div class="jumbotron text-center">
+    <h1>Pokémon</h1>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin"> Info </a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false"> Pokémon </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink='/add_pokemon'> Add Pokémon </a>
+            <a class="dropdown-item" routerLink="/add_fast_attack"> Add Fast Attack </a>
+            <a class="dropdown-item" routerLink="/add_main_attack"> Add Main Attack </a>
+            <a class="dropdown-item" routerLink="/connect_attack"> Connect Pokémon with Attacks </a>
+            <a class="dropdown-item" routerLink="/pokemon_details"> Add Pokémon Details </a>
+            <a class="dropdown-item" routerLink="/pokemon_evolution"> Pokémon Evolution </a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/all_pokemon">All Pokémon</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tournaments">Tournaments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/table_points">Points</a>
+      </li>
+</ul>
+
+
+<div class='container'>
+
+    <div class='row justify-content-center mt-4' style='color: crimson;'>
+        <h2>All Pokémon</h2>
+    </div>
+    <div class='row mt-3'>
+        <div class='col col-sm-1'>
+
+        </div>
+
+        <div class='col col-sm-10'>
+            <div class='row'>
+                <div *ngFor="let t of types" class='col col-sm text-center pl-2 pr-2' style="width: 5.55%;" [id]="t.id">
+                    <img src="assets/icons_big/{{t.id}}.png" (click)="type_clicked(t.id)" />
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class='col col-sm-1'>
+
+        </div>
+
+    </div>
+
+
+
+    <div class='row justify-content-center mt-3'>
+
+        <div class='col col-sm-3 justify-content-center'>
+            <table class="table" id='pokemon_table'>
+
+                <tr *ngFor='let p of pokemon; let i = index' class='justify-content-center'>
+                    <td *ngIf='i%4==0'>
+                        <div>
+                            <output type='text' class='justify-content-center'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h4>{{p.name}}</h4>
+                            </output>
+
+                            <a [routerLink]="['../pokemon_profile', p.id]"><img src="assets/pokemon/{{p.id}}.png" /></a>
+
+
+                            <div class='text-center'>
+                                <img src="assets/icons/{{p.type1}}.ico" />
+                                <img *ngIf='p.type2!=0' src="assets/icons/{{p.type2}}.ico" />
+                            </div>
+
+                            <output type='text' class='justify-content-center text-muted'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h6>#{{p.id}}</h6>
+                            </output>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class='co col-sm-3 justify-content-center'>
+            <table class="table" id='pokemon_table'>
+
+                <tr *ngFor='let p of pokemon; let i = index' class='justify-content-center'>
+                    <td *ngIf='i%4==1'>
+                        <div>
+                            <output type='text' class='justify-content-center'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h4>{{p.name}}</h4>
+                            </output>
+
+                            <a [routerLink]="['../pokemon_profile', p.id]"><img src="assets/pokemon/{{p.id}}.png" /></a>
+
+
+                            <div class='text-center'>
+                                <img src="assets/icons/{{p.type1}}.ico" />
+                                <img *ngIf='p.type2!=0' src="assets/icons/{{p.type2}}.ico" />
+                            </div>
+
+                            <output type='text' class='justify-content-center text-muted'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h6>#{{p.id}}</h6>
+                            </output>
+
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+        <div class='col col-sm-3 justify-content-center'>
+            <table class="table" id='pokemon_table'>
+
+                <tr *ngFor='let p of pokemon; let i = index' class='justify-content-center'>
+                    <td *ngIf='i%4==2'>
+                        <div>
+                            <output type='text' class='justify-content-center'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h4>{{p.name}}</h4>
+                            </output>
+
+                            <a [routerLink]="['../pokemon_profile', p.id]"><img src="assets/pokemon/{{p.id}}.png" /></a>
+
+                            <div class='text-center'>
+                                <img src="assets/icons/{{p.type1}}.ico" />
+                                <img *ngIf='p.type2!=0' src="assets/icons/{{p.type2}}.ico" />
+                            </div>
+
+                            <output type='text' class='justify-content-center text-muted'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h6>#{{p.id}}</h6>
+                            </output>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class='col col-sm-3 justify-content-center'>
+            <table class="table" id='pokemon_table'>
+
+                <tr *ngFor='let p of pokemon; let i = index' class='justify-content-center'>
+                    <td *ngIf='i%4==3'>
+                        <div>
+                            <output type='text' class='justify-content-center'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h4>{{p.name}}</h4>
+                            </output>
+
+                            <a [routerLink]="['../pokemon_profile', p.id]"><img src="assets/pokemon/{{p.id}}.png" /></a>
+
+
+                            <div class='text-center'>
+                                <img src="assets/icons/{{p.type1}}.ico" />
+                                <img *ngIf='p.type2!=0' src="assets/icons/{{p.type2}}.ico" />
+                            </div>
+
+
+                            <output type='text' class='justify-content-center text-muted'
+                                style="font-weight: bold; text-align: center; width: 100%;">
+                                <h6>#{{p.id}}</h6>
+                            </output>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+</div>

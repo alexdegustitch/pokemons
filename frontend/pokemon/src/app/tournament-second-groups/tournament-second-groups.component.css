@@ -1,0 +1,52 @@
+
+a[id^="5"]{
+    color: red;
+}
+a[id^="6"]{
+    color: red;
+}
+
+a[id^="7"]{
+    color: red;
+}
+a[id^="8"]{
+    color: red;
+}
+
+
+
+a[id^="1"]{
+    color: green;
+}
+
+a[id^="2"]{
+    color: green;
+}
+a[id^="3"]{
+    color: green;
+}
+a[id^="4"]{
+    color: green;
+}
+
+
+td[id^="5"]{
+    color: red;
+}
+td[id^="6"]{
+    color: red;
+}
+
+td[id^="1"]{
+    color: green;
+}
+
+td[id^="2"]{
+    color: green;
+}
+td[id^="3"]{
+    color: green;
+}
+td[id^="4"]{
+    color: green;
+}

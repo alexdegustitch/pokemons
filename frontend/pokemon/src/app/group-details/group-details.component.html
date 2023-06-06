@@ -1,0 +1,96 @@
+<div class="jumbotron text-center">
+    <h1>Pokémon</h1>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin"> Info </a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false"> Pokémon </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink='/add_pokemon'> Add Pokémon </a>
+            <a class="dropdown-item" routerLink="/add_fast_attack"> Add Fast Attack </a>
+            <a class="dropdown-item" routerLink="/add_main_attack"> Add Main Attack </a>
+            <a class="dropdown-item" routerLink="/connect_attack"> Connect Pokémon with Attacks </a>
+            <a class="dropdown-item" routerLink="/pokemon_details"> Add Pokémon Details </a>
+            <a class="dropdown-item" routerLink="/pokemon_evolution"> Pokémon Evolution </a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/all_pokemon">All Pokémon</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tournaments">Tournaments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/table_points">Points</a>
+      </li>
+</ul>
+
+
+<div class='container'>
+    <div class='row justify-content-center'>
+        <h2>Group {{group.name}} - Stage {{-group.type+3}}</h2>
+    </div>
+    <div class='row justify-content-center'>
+        <div class='col col-sm-3'>
+            
+        </div>
+        <div class='col col-sm-6'>
+            <table class="table" >
+                <thead class="thead-light">
+                    <tr>
+                        <th style="width: 10%;">#</th>
+                        <th style="width: 60%">Pokemon</th>
+                        <th style="width: 15%">Points</th>
+                        <th style="width: 15%">HP Left(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let p of pokemon_group; let j = index;'
+                        class='justify-content-center'>
+                        <td>{{j+1}}</td>
+                        <td><a [id]="p.place"
+                                [routerLink]="['/pokemon_profile', p.idPokemon]">{{p.namePokemon}}</a>
+                        </td>
+                        <td style="text-align: center;">{{p.points}}</td>
+                        <td style="text-align: center;">{{p.hp_left}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class='col col-sm-3'>
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3 mb-3">
+        <h4> Matches </h4>
+    </div>
+    <div class="row justify-content-center">
+        <table class="table" >
+            <tbody>
+                <tr *ngFor='let m of match_details; let j = index'
+                    class='justify-content-center'>
+                    <td>
+                        <a *ngIf="m.hp_left1 > 0" style="color: green" [routerLink]="['/pokemon_profile', m.idPokemon1]">{{m.namePokemon1}}</a>
+                        <a *ngIf="m.hp_left2 > 0" style="color: red" [routerLink]="['/pokemon_profile', m.idPokemon1]">{{m.namePokemon1}}</a>
+                    </td>
+                    <td style="text-align: center;">{{m.nameFastAttack1}}<img src='assets/icons/{{m.idFastAttack1Type}}.ico'/></td>
+                    <td style="text-align: center;">{{m.nameMainAttack1}}<img src='assets/icons/{{m.idMainAttack1Type}}.ico'/></td>
+                    <td style="text-align: center;">{{m.hp_left1}}</td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center;">{{m.hp_left2}}</td>
+                    <td style="text-align: center;"><img src='assets/icons/{{m.idMainAttack2Type}}.ico'/>{{m.nameMainAttack2}}</td>   
+                    <td style="text-align: center;"><img src='assets/icons/{{m.idFastAttack2Type}}.ico'/>{{m.nameFastAttack2}}</td>         
+                    <td>
+                        <a *ngIf="m.hp_left1 > 0" style="color: red" [routerLink]="['/pokemon_profile', m.idPokemon2]">{{m.namePokemon2}}</a>
+                        <a *ngIf="m.hp_left2 > 0" style="color: green" [routerLink]="['/pokemon_profile', m.idPokemon2]">{{m.namePokemon2}}</a>
+                    </td>    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  
+</div>

@@ -1,0 +1,109 @@
+
+
+<div class="jumbotron text-center">
+    <h1>Pokémon</h1>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin"> Info </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> Pokémon </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink='/add_pokemon'> Add Pokémon </a>
+        <a class="dropdown-item active" routerLink="#"> Add Fast Attack </a>
+        <a class="dropdown-item" routerLink="/add_main_attack"> Add Main Attack </a>
+        <a class="dropdown-item" routerLink="/connect_attack"> Connect Pokémon with Attacks </a>
+        <a class="dropdown-item" routerLink="/pokemon_details"> Add Pokémon Details </a>
+        <a class="dropdown-item" routerLink="/pokemon_evolution"> Pokémon Evolution </a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/all_pokemon">All Pokémon</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/tournaments">Tournaments</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/table_points">Points</a>
+    </li>
+  </ul>
+
+
+  <div class = 'container'> 
+    
+    <div class='row justify-content-center mt-4' style='color: crimson;'>
+        <h2>Add new Fast Attack</h2>
+    </div>
+    <div class='row'>
+      <div class='col col-sm-3'>
+
+      </div>
+      <div class='col col-sm-6'>
+
+        <div class="alert alert-danger mb-0 pt-1 pb-1 row justify-content-center" role="alert" *ngIf='added==false' >
+          <small>{{message}}</small>
+        </div>
+
+        <div class="alert alert-success mb-0 pt-1 pb-1 row justify-content-center" role="alert" *ngIf='added==true' >
+          <small>{{message}}</small>
+        </div>
+      </div>
+
+      <div class='col col-sm-3'>
+        
+      </div>
+
+    </div>
+  
+   
+
+    <div class = 'row justify-content-center mt-3' style="background:transparent url('assets/images/fast_attack2.jpg'); background-size: cover;">
+        <div class = 'col col-sm-4'> 
+
+        </div>
+        <div class = 'co col-sm-4  justify-content-center'>
+
+          <form>
+              <div class="form-group">
+                <label for="name" class='font-weight-bold'>Name</label>
+                <input type="text" [(ngModel)] = 'name' class="form-control" id="name" name='name'>
+                
+              </div>
+              
+              <div class="form-group">
+                <label for = "type" class='font-weight-bold'>Type</label>
+                <select id="type" class="form-control" [(ngModel)]= 'type' name='type'>
+                  
+                  <option  *ngFor = "let type of types" [value]='type.id' [selected]="type.id == 0"  class="select_option" [id]="type.name">
+                      {{type.name}} 
+                  </option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                  <label for="damage" class='font-weight-bold'>Damage</label>
+                  <input type="text" [(ngModel)] = 'damage' class="form-control w-50" id="damage" name='damage'>
+              </div>
+
+              <div class="form-group">
+                  <label for="energy" class='font-weight-bold'>Energy</label>
+                  <input type='text' class="form-control w-50" [(ngModel)] = 'energy' id="energy" name='energy'>
+              </div>
+              
+              <div class="form-group" >
+                <label for="duration" class='font-weight-bold'>Duration[ms]</label>
+                <input type="text" [(ngModel)] = 'duration' class="form-control w-50" id="duration" name='duration'>
+            </div>
+            <div class='form-group text-center'>
+                <button type="submit" class="btn btn-success" (click) = "add_new_fast_attack()">Submit</button>
+              </div>
+            </form>
+          </div>
+          <div class = 'col col-sm-4 '> 
+            <div class='mt-4 text-right pr-4'>
+              <button type="button" class="btn btn-danger" (click) = "clear_fields()">Clear</button>
+            </div>
+          </div>
+  </div>

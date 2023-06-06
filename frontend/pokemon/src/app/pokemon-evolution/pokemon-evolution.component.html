@@ -1,0 +1,119 @@
+<div class="jumbotron text-center">
+    <h1>Pokémon</h1>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin"> Info </a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false"> Pokémon </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink='/add_pokemon'> Add Pokémon </a>
+            <a class="dropdown-item" routerLink="/add_fast_attack"> Add Fast Attack </a>
+            <a class="dropdown-item" routerLink="/add_main_attack"> Add Main Attack </a>
+            <a class="dropdown-item " routerLink="/connect_attack"> Connect Pokémon with Attacks </a>
+            <a class="dropdown-item" routerLink="/pokemon_details"> Add Pokémon Details </a>
+            <a class="dropdown-item active" routerLink="/pokemon_evolution"> Pokémon Evolution </a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/all_pokemon">All Pokémon</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tournaments">Tournaments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/table_points">Points</a>
+      </li>
+</ul>
+
+
+<div class='container'>
+
+    <div class='row justify-content-center mt-4' style='color: crimson;'>
+        <h2>Pokémon Evolution</h2>
+    </div>
+    <div class='row'>
+        <div class='col col-sm-3'>
+
+        </div>
+        <div class='col col-sm-6'>
+
+            <div class="alert alert-danger mb-0 pt-1 pb-1 row justify-content-center" role="alert"
+                *ngIf='redAlertShow==true'>
+                <small>{{message}}</small>
+            </div>
+
+            <div class="alert alert-success mb-0 pt-1 pb-1 row justify-content-center" role="alert"
+                *ngIf='greenAlertShow==true'>
+                <small>{{message1}}</small>
+            </div>
+        </div>
+
+        <div class='col col-sm-3'>
+
+        </div>
+
+    </div>
+
+
+
+    <div class='row justify-content-center mt-3'
+        style="background:transparent url('assets/images/main_attack3.png'); background-size: cover;">
+        <div class='col col-sm-4'>
+
+        </div>
+        <div class='co col-sm-4  justify-content-center'>
+
+            <form>
+                <div class="form-group mb-5 text-center">
+                    <label for="pokemon" class='font-weight-bold '>Choose Pokémon</label>
+                    <br />
+                    <select class="selectpicker form-control form-control-lg" data-live-search="true"
+                        [(ngModel)]='idPokemon' name="pokemon" id='pokemon'>
+                        <option *ngFor="let p of pokemon" [value]='p.id'>
+                            {{p.name}}
+                        </option>
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group mb-5 text-center">
+                    <label for="evolution1" class='font-weight-bold'>Evolution I</label>
+                    <select id='evolution1' class="selectpicker form-control form-control-lg" data-live-search="true"
+                        [(ngModel)]="idPokemon1" name="evolution1" multiple>
+                        <option *ngFor="let p of pokemon" [value]='p.id'>
+                            {{p.name}}
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="form-group mb-5 text-center">
+                    <label for="evolution2" class='font-weight-bold'>Evolution II</label>
+                    <select class="selectpicker form-control form-control-lg" data-live-search="true"
+                        [(ngModel)]='idPokemon2' name="evolution2" id='evolution2' multiple>
+                        <option *ngFor="let p of pokemon" [value]='p.id'>
+                            {{p.name}}
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <div class='form-group text-center'>
+                    <button type="submit" class="btn btn-success" (click)="add_pokemon_evolution()">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class='col col-sm-4'>
+            <div class='mt-4 text-right pr-4'>
+                <button type="button" class="btn btn-danger" (click)="clear_fields()">Clear</button>
+            </div>
+        </div>
+
+    </div>
